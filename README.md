@@ -41,16 +41,7 @@ Designed by **Liveless** & **Zjyjoe** & **Colin1112** as C2027
 pip install ppllocr
 ````
 
-或者从源码安装：
-
-```bash
-git clone [https://github.com/gitpetyr/ppllocr.git](https://github.com/gitpetyr/ppllocr.git)
-cd ppllocr
-pip install .
-```
-
-> **注意**：默认安装的是 CPU 版 `onnxruntime`。如果你拥有 NVIDIA 显卡并希望获得更快的推理速度，请手动安装 GPU 版：
-> `pip install onnxruntime-gpu`
+> 经测试 cpu 推理已经足够快（<120 ms），故不提供 gpu 推理。
 
 ## 快速开始
 
@@ -68,7 +59,7 @@ print(f"识别结果: {text}")
 # print(details) 
 ```
 
-在爬虫或 Web API 场景中，你通常直接持有图片的二进制数据 (`bytes`)，无需落地存文件。
+在爬虫中，你通常直接持有图片的二进制数据 (`bytes`)。
 
 ```python
 import requests
