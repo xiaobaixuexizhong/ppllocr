@@ -2,7 +2,8 @@
 
 # Ppllocr
 
-![Logo](https://img.shields.io/badge/OCR-YOLOv11-blue?style=for-the-badge&logo=python)
+![Logo](https://img.shields.io/badge/Ppllocr-YOLOv11-brightgreen?style=for-the-badge&logo=python)
+
 [![License](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
 [![PyPI](https://img.shields.io/pypi/v/ppllocr)](https://pypi.org/project/ppllocr/)
 [![Python](https://img.shields.io/badge/python-3.12-blue.svg)](https://www.python.org/)
