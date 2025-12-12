@@ -22,9 +22,20 @@ Designed by **Liveless** & **Zjyjoe** & **Colin1112** as C2027
 
 它专为解决**高难度验证码**。Ppllocr 在训练阶段引入了“地狱级”对抗样本生成技术（包括弹性形变、混沌轨迹干扰线、靶向切割、伪装笔画等），使其在面对严重扭曲和重度干扰的图像时，依然保持极高的识别精度。
 
-目标上对标 [Ddddocr](https://github.com/sml2h3/ddddocr)。
+目标上对标 [Ddddocr](https://github.com/sml2h3/ddddocr)，部分情况性能与准确度碾压 [Ddddocr](https://github.com/sml2h3/ddddocr)。
 
 **尽管如此，具体效果看玄学。**
+
+### 目前可以识别字符集
+
+- 数字：`0123456789`
+
+- 大写字母：`ABCDEFGHIJKLMNOPQRSTUVWXYZ`
+
+- 小写字母：`abcdefghijklmnopqrstuvwxyz`
+
+- 部分特殊字符`*/%@#`
+
 
 ## 核心特性
 
