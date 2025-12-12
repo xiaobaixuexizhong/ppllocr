@@ -8,6 +8,8 @@
 [![PyPI](https://img.shields.io/pypi/v/ppllocr)](https://pypi.org/project/ppllocr/)
 [![Python](https://img.shields.io/badge/python-3.12-blue.svg)](https://www.python.org/)
 
+![](https://www.luogu.com.cn/lg4/captcha)
+
 **高性能 · 抗干扰 · 纯 ONNX 验证码识别引擎**
 
 Designed by **Liveless** & **Zjyjoe** & **Colin1112** as C2027
