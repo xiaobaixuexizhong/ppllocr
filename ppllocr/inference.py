@@ -13,10 +13,16 @@ class OCR:
         # 1. 如果用户没传路径，自动加载包内的默认模型
         if model_path is None:
             current_dir = os.path.dirname(os.path.abspath(__file__))
+            # 注意：这里假设文件名是 ppllocr_v1.onnx，如果你的文件名不同请修改
             model_path = os.path.join(current_dir, "assets", "ppllocr_v1.onnx")
         
         if not os.path.exists(model_path):
-            raise FileNotFoundError(f"Model file not found: {model_path}")
+            # 尝试查找旧文件名兼容
+            fallback_path = os.path.join(current_dir, "assets", "yolo_ocr.onnx")
+            if os.path.exists(fallback_path):
+                model_path = fallback_path
+            else:
+                raise FileNotFoundError(f"Model file not found: {model_path}")
 
         self.class_names = CHARACTERS
         providers = ['CUDAExecutionProvider', 'CPUExecutionProvider'] if use_gpu else ['CPUExecutionProvider']
@@ -83,7 +89,8 @@ class OCR:
             order = order[inds + 1]
         return keep
 
-    def predict(self, input_source, conf=0.25, iou=0.45):
+    def _run_inference(self, input_source, conf=0.25, iou=0.45):
+        """内部核心推理方法"""
         img = None
         if isinstance(input_source, str):
             if os.path.exists(input_source): img = cv2.imread(input_source)
@@ -136,3 +143,24 @@ class OCR:
                 })
         
         return "".join(result_text), details
+
+    def classification(self, input_source, conf=0.25, iou=0.45):
+        """
+        直接返回识别的内容字符串
+        """
+        text, _ = self._run_inference(input_source, conf, iou)
+        return text
+
+    def classification_box(self, input_source, conf=0.25, iou=0.45):
+        """
+        直接返回识别的内容字符串和检测详细信息
+        :return: (text, details) 
+                 details 为列表，每项包含 {'char': 字符, 'conf': 置信度, 'box': [x1, y1, x2, y2]}
+        """
+        return self._run_inference(input_source, conf, iou)
+
+    def predict(self, input_source, conf=0.25, iou=0.45):
+        """
+        (保留接口兼容性) 同 classification_box
+        """
+        return self.classification_box(input_source, conf, iou)
