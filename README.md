@@ -14,8 +14,6 @@
 
 Designed by **liveless** & **zjyjoe** & **colin1112a** as C2027
 
-## **紧急通知：经反馈 2.0 beta 存在很多问题，因训练数据问题已完全丢失原先的健壮性，请回退至1.2**
-
 </div>
 
 ---
@@ -30,14 +28,13 @@ Designed by **liveless** & **zjyjoe** & **colin1112a** as C2027
 
 **尽管如此，具体效果看玄学。**
 
-**[2.0 beta](https://github.com/gitpetyr/ppllocr/releases/tag/v2.0beta) 更新添加了对简单四则运算（即字符集`+-()`）的支持**
+**[2.2 beta](https://github.com/gitpetyr/ppllocr/releases/tag/v2.2beta) 更新和强化了对四则运算（即字符集`+-()`）、马赛克特效、随机撒点等干扰的支持。**
 
 ### 目前可以识别字符集
 
-- 数字：`0123456789`
-- 大写字母：`ABCDEFGHIJKLMNOPQRSTUVWXYZ`
-- 小写字母：`abcdefghijklmnopqrstuvwxyz`
-- 部分特殊字符`/*%@#+-()`
+```
+['#', '%', '*', '+', '-', '/', '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '=', '?', '@', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z', 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z']
+```
 
 ## 核心特性
 
@@ -116,7 +113,7 @@ from ppllocr import OCR
 ocr = OCR()
 
 # 模拟从网络获取图片
-url = "[https://www.luogu.com.cn/lg4/captcha](https://www.luogu.com.cn/lg4/captcha)"
+url = "https://www.luogu.com.cn/lg4/captcha"
 img_bytes = requests.get(url).content
 
 # 直接传入 bytes
